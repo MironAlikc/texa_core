@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:texa_core/core/extensions/theme_ext.dart';
+import 'package:texa_core/core/theme/app_typography.dart';
 import 'package:texa_core/core/theme/theme_cubit/theme_cubit.dart';
 
 class ThemeTestPage extends StatelessWidget {
@@ -14,38 +15,145 @@ class ThemeTestPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: colors.background,
       appBar: AppBar(
-        title: const Text('Theme Settings'),
+        title: Text('Typography & Theme', style: AppTypography.h3),
         backgroundColor: colors.navBackground,
         foregroundColor: colors.navActiveItem,
       ),
-      body: Center(
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(24.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Icon(_getThemeIcon(themeMode), size: 64, color: colors.primary),
-            const SizedBox(height: 20),
-            Text(
-              'Current Mode: ${themeMode.name.toUpperCase()}',
-              style: TextStyle(
-                color: colors.textPrimary,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+            Center(
+              child: Column(
+                children: [
+                  Icon(
+                    _getThemeIcon(themeMode),
+                    size: 48,
+                    color: colors.primary,
+                  ),
+                  const SizedBox(height: 12),
+                  Text(
+                    'Mode: ${themeMode.name.toUpperCase()}',
+                    style: AppTypography.label.copyWith(
+                      color: colors.textSecondary,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: colors.accent,
+                      foregroundColor: colors.textInverted,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 12,
+                      ),
+                    ),
+                    onPressed: () => context.read<ThemeCubit>().toggleTheme(),
+                    child: Text('Toggle Theme', style: AppTypography.button),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 32),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: colors.accent,
-                foregroundColor: colors.textInverted,
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 32,
-                  vertical: 16,
-                ),
+
+            const Divider(height: 40),
+
+            _sectionTitle("Headings", colors),
+            Text(
+              'H1 Header',
+              style: AppTypography.h1.copyWith(color: colors.textPrimary),
+            ),
+            Text(
+              'H2 Header',
+              style: AppTypography.h2.copyWith(color: colors.textPrimary),
+            ),
+            Text(
+              'H3 Header',
+              style: AppTypography.h3.copyWith(color: colors.textPrimary),
+            ),
+            Text(
+              'H4 Header',
+              style: AppTypography.h4.copyWith(color: colors.textPrimary),
+            ),
+
+            const SizedBox(height: 24),
+
+            _sectionTitle("Body Text", colors),
+            Text(
+              'Body Large - Основной длинный текст.',
+              style: AppTypography.bodyLarge.copyWith(
+                color: colors.textPrimary,
               ),
-              onPressed: () => context.read<ThemeCubit>().toggleTheme(),
-              child: const Text('Toggle Theme Mode'),
+            ),
+            Text(
+              'Body Medium - Стандартный текст интерфейса.',
+              style: AppTypography.bodyMedium.copyWith(
+                color: colors.textPrimary,
+              ),
+            ),
+            Text(
+              'Body Medium Bold - Жирный акцент.',
+              style: AppTypography.bodyMediumBold.copyWith(
+                color: colors.textPrimary,
+              ),
+            ),
+            Text(
+              'Body Small - Вторичная информация.',
+              style: AppTypography.bodySmall.copyWith(
+                color: colors.textPrimary,
+              ),
+            ),
+
+            const SizedBox(height: 24),
+
+            _sectionTitle("Special & Metadata", colors),
+            Text(
+              'Clickable Link',
+              style: AppTypography.link.copyWith(color: colors.primary),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'LABEL: FORM FIELD',
+              style: AppTypography.label.copyWith(color: colors.textSecondary),
+            ),
+            Text(
+              'Caption: hint or timestamp',
+              style: AppTypography.caption.copyWith(
+                color: colors.textSecondary,
+              ),
+            ),
+            Text(
+              'TINY LEGAL DISCLAIMER',
+              style: AppTypography.tiny.copyWith(color: colors.textSecondary),
+            ),
+
+            const SizedBox(height: 24),
+
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: colors.accent.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                'Banner Title',
+                style: AppTypography.bannerTitle.copyWith(color: colors.accent),
+              ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _sectionTitle(String title, dynamic colors) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Text(
+        title.toUpperCase(),
+        style: AppTypography.label.copyWith(
+          color: colors.primary,
+          letterSpacing: 1.2,
         ),
       ),
     );
