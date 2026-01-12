@@ -6,6 +6,7 @@ import 'package:texa_core/core/l10n/locale_cubit/locale_cubit.dart';
 import 'package:texa_core/core/navigation/app_router.dart';
 import 'package:texa_core/core/theme/app_theme.dart';
 import 'package:texa_core/core/theme/theme_cubit/theme_cubit.dart';
+import 'package:texa_core/features/auth/fake_login/auth_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +18,7 @@ void main() async {
       providers: [
         BlocProvider(create: (_) => getIt<ThemeCubit>()),
         BlocProvider(create: (_) => getIt<LocaleCubit>()),
+        BlocProvider(create: (_) => getIt<AuthCubit>()..checkAuth()),
       ],
 
       child: MyApp(),
@@ -29,6 +31,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appRouter = getIt<AppRouter>().router;
+
     return BlocBuilder<LocaleCubit, Locale>(
       builder: (context, currentLocale) {
         return BlocBuilder<ThemeCubit, ThemeMode>(
@@ -42,7 +46,7 @@ class MyApp extends StatelessWidget {
               themeMode: themeMode,
               theme: AppTheme.light(),
               darkTheme: AppTheme.dark(),
-              routerConfig: AppRouter.router,
+              routerConfig: appRouter,
               debugShowCheckedModeBanner: false,
             );
           },

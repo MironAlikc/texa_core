@@ -22,4 +22,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
+  String get receiving => 'Receiving';
+
+  @override
+  String get loading => 'Loading';
+
+  @override
+  String get materials => 'Materials';
+
+  @override
+  String get stock => 'Stock';
+
+  @override
+  String get accounting => 'Accounting';
+
+  @override
+  String get warehouse => 'Warehouse';
+
+  @override
+  String get sales => 'Sales';
+
+  @override
+  String get aiAssistant => 'AI Assistant';
+
+  @override
+  String get tracking => 'Tracking';
+
+  @override
+  String get settings => 'Settings';
 }

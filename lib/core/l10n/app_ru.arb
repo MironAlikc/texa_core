@@ -4,5 +4,15 @@
   "delivery": "Доставка",
   "deliveryPoint": "Пункт выдачи",
   "returns": "Возвраты",
-  "profile": "Профиль"
+  "profile": "Профиль",
+  "receiving": "Приемка",
+  "loading": "Погрузка",
+  "materials": "Материалы",
+  "stock": "Запасы",
+  "accounting": "Учет",
+  "warehouse": "Склад",
+  "sales": "Продажи",
+  "aiAssistant": "AI-помощник",
+  "tracking": "Отслеживание",
+  "settings": "Настройки"
 }
