@@ -88,7 +88,11 @@ class AppRouter {
       ShellRoute(
         navigatorKey: _driverKey,
         builder: (context, state, child) {
-          return ScaffoldWithNavBar(navBar: DriverNavBar(), child: child);
+          return ScaffoldWithNavBar(
+            key: ValueKey(state.uri.path),
+            navBar: DriverNavBar(),
+            child: child,
+          );
         },
         routes: [
           GoRoute(
@@ -137,7 +141,11 @@ class AppRouter {
       ShellRoute(
         navigatorKey: _recipientKey,
         builder: (context, state, child) {
-          return ScaffoldWithNavBar(navBar: RecipientNavBar(), child: child);
+          return ScaffoldWithNavBar(
+            key: ValueKey(state.uri.path),
+            navBar: RecipientNavBar(),
+            child: child,
+          );
         },
         routes: [
           GoRoute(
@@ -187,7 +195,11 @@ class AppRouter {
       ShellRoute(
         navigatorKey: _managerKey,
         builder: (context, state, child) {
-          return ScaffoldWithNavBar(navBar: ManagerNavBar(), child: child);
+          return ScaffoldWithNavBar(
+            key: ValueKey(state.uri.path),
+            navBar: ManagerNavBar(),
+            child: child,
+          );
         },
         routes: [
           GoRoute(
