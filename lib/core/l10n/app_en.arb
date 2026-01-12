@@ -1,4 +1,8 @@
 {
-    "@@locale": "en",
-    "appName": "Texa Core"
+  "@@locale": "en",
+  "appName": "Texa Core",
+  "delivery": "Delivery",
+  "deliveryPoint": "Delivery Point",
+  "returns": "Returns",
+  "profile": "Profile"
 }

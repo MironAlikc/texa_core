@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:texa_core/core/di/injection.dart';
 import 'package:texa_core/core/l10n/gen/app_localizations.dart';
 import 'package:texa_core/core/l10n/locale_cubit/locale_cubit.dart';
+import 'package:texa_core/core/navigation/app_router.dart';
 import 'package:texa_core/core/theme/app_theme.dart';
 import 'package:texa_core/core/theme/theme_cubit/theme_cubit.dart';
-import 'package:texa_core/features/home/theme_test_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       builder: (context, currentLocale) {
         return BlocBuilder<ThemeCubit, ThemeMode>(
           builder: (context, themeMode) {
-            return MaterialApp(
+            return MaterialApp.router(
               onGenerateTitle: (context) =>
                   AppLocalizations.of(context).appName,
               supportedLocales: AppLocalizations.supportedLocales,
@@ -42,7 +42,8 @@ class MyApp extends StatelessWidget {
               themeMode: themeMode,
               theme: AppTheme.light(),
               darkTheme: AppTheme.dark(),
-              home: ThemeTestPage(),
+              routerConfig: AppRouter.router,
+              debugShowCheckedModeBanner: false,
             );
           },
         );

@@ -10,4 +10,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get appName => 'تيكسا كور';
+
+  @override
+  String get delivery => 'التوصيل';
+
+  @override
+  String get deliveryPoint => 'نقطة الاستلام';
+
+  @override
+  String get returns => 'المرتجعات';
+
+  @override
+  String get profile => 'الملف الشخصي';
 }

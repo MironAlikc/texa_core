@@ -1,4 +1,8 @@
 {
-    "@@locale": "ar",
-    "appName": "تيكسا كور"
+  "@@locale": "ar",
+  "appName": "تيكسا كور",
+  "delivery": "التوصيل",
+  "deliveryPoint": "نقطة الاستلام",
+  "returns": "المرتجعات",
+  "profile": "الملف الشخصي"
 }

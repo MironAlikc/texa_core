@@ -10,4 +10,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get appName => 'Texa Core';
+
+  @override
+  String get delivery => 'Delivery';
+
+  @override
+  String get deliveryPoint => 'Delivery Point';
+
+  @override
+  String get returns => 'Returns';
+
+  @override
+  String get profile => 'Profile';
 }
