@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:texa_core/core/navigation/routes_provider.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class DriverProfileScreen extends StatelessWidget {
+  const DriverProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

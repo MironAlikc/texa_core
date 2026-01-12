@@ -14,7 +14,9 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../../features/auth/fake_login/auth_cubit.dart' as _i351;
 import '../l10n/locale_cubit/locale_cubit.dart' as _i555;
+import '../navigation/app_router.dart' as _i630;
 import '../theme/theme_cubit/theme_cubit.dart' as _i613;
 import 'injection.dart' as _i464;
 
@@ -38,6 +40,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i613.ThemeCubit>(
       () => _i613.ThemeCubit(gh<_i460.SharedPreferences>()),
+    );
+    gh.lazySingleton<_i351.AuthCubit>(
+      () => _i351.AuthCubit(gh<_i460.SharedPreferences>()),
+    );
+    gh.lazySingleton<_i630.AppRouter>(
+      () => _i630.AppRouter(gh<_i351.AuthCubit>()),
     );
     return this;
   }

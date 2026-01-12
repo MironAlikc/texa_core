@@ -4,5 +4,15 @@
   "delivery": "التوصيل",
   "deliveryPoint": "نقطة الاستلام",
   "returns": "المرتجعات",
-  "profile": "الملف الشخصي"
+  "profile": "الملف الشخصي",
+  "receiving": "الاستلام",
+  "loading": "تحميل",
+  "materials": "المواد",
+  "stock": "المخزون",
+  "accounting": "المحاسبة",
+  "warehouse": "المستودع",
+  "sales": "المبيعات",
+  "aiAssistant": "مساعد الذكاء الاصطناعي",
+  "tracking": "التتبع",
+  "settings": "الإعدادات"
 }

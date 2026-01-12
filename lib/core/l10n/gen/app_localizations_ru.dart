@@ -22,4 +22,34 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get profile => 'Профиль';
+
+  @override
+  String get receiving => 'Приемка';
+
+  @override
+  String get loading => 'Погрузка';
+
+  @override
+  String get materials => 'Материалы';
+
+  @override
+  String get stock => 'Запасы';
+
+  @override
+  String get accounting => 'Учет';
+
+  @override
+  String get warehouse => 'Склад';
+
+  @override
+  String get sales => 'Продажи';
+
+  @override
+  String get aiAssistant => 'AI-помощник';
+
+  @override
+  String get tracking => 'Отслеживание';
+
+  @override
+  String get settings => 'Настройки';
 }

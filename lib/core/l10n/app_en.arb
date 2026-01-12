@@ -4,5 +4,15 @@
   "delivery": "Delivery",
   "deliveryPoint": "Delivery Point",
   "returns": "Returns",
-  "profile": "Profile"
+  "profile": "Profile",
+  "receiving": "Receiving",
+  "loading": "Loading",
+  "materials": "Materials",
+  "stock": "Stock",
+  "accounting": "Accounting",
+  "warehouse": "Warehouse",
+  "sales": "Sales",
+  "aiAssistant": "AI Assistant",
+  "tracking": "Tracking",
+  "settings": "Settings"
 }
