@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:texa_core/core/extensions/theme_ext.dart';
+import 'package:texa_core/core/l10n/gen/app_localizations.dart';
+import 'package:texa_core/core/l10n/locale_cubit/locale_cubit.dart';
 import 'package:texa_core/core/theme/app_typography.dart';
 import 'package:texa_core/core/theme/theme_cubit/theme_cubit.dart';
 
@@ -11,6 +13,7 @@ class ThemeTestPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.color;
     final themeMode = context.watch<ThemeCubit>().state;
+    final currentLocale = context.watch<LocaleCubit>().state;
 
     return Scaffold(
       backgroundColor: colors.background,
@@ -34,7 +37,7 @@ class ThemeTestPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Mode: ${themeMode.name.toUpperCase()}',
+                    'Mode ${AppLocalizations.of(context).appName}: ${themeMode.name.toUpperCase()}',
                     style: AppTypography.label.copyWith(
                       color: colors.textSecondary,
                     ),
@@ -51,6 +54,18 @@ class ThemeTestPage extends StatelessWidget {
                     ),
                     onPressed: () => context.read<ThemeCubit>().toggleTheme(),
                     child: Text('Toggle Theme', style: AppTypography.button),
+                  ),
+                  const SizedBox(height: 8),
+                  TextButton.icon(
+                    onPressed: () =>
+                        context.read<LocaleCubit>().toggleLanguage(),
+                    icon: Icon(Icons.language, color: colors.primary),
+                    label: Text(
+                      'Language: ${currentLocale.languageCode.toUpperCase()}',
+                      style: AppTypography.button.copyWith(
+                        color: colors.primary,
+                      ),
+                    ),
                   ),
                 ],
               ),
