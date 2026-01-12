@@ -105,6 +105,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Texa Core'**
   String get appName;
+
+  /// No description provided for @delivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery'**
+  String get delivery;
+
+  /// No description provided for @deliveryPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Point'**
+  String get deliveryPoint;
+
+  /// No description provided for @returns.
+  ///
+  /// In en, this message translates to:
+  /// **'Returns'**
+  String get returns;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
 }
 
 class _AppLocalizationsDelegate

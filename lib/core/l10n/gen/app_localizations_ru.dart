@@ -10,4 +10,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get appName => 'Текса Кор';
+
+  @override
+  String get delivery => 'Доставка';
+
+  @override
+  String get deliveryPoint => 'Пункт выдачи';
+
+  @override
+  String get returns => 'Возвраты';
+
+  @override
+  String get profile => 'Профиль';
 }
