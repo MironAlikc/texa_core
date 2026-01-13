@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import 'package:texa_core/core/extensions/theme_ext.dart';
 import 'package:texa_core/core/l10n/gen/app_localizations.dart';
 import 'package:texa_core/core/navigation/routes_provider.dart';
+import 'package:texa_core/core/theme/app_sizes.dart';
 import 'package:texa_core/core/theme/app_typography.dart';
 import 'package:texa_core/core/widgets/nav_bars/app_navigation_destination.dart';
 
@@ -52,56 +54,61 @@ class ManagerNavBar extends StatelessWidget {
     final selectedIndex = _calculateSelectedIndex(context);
     final localizatons = AppLocalizations.of(context);
 
-    return NavigationBar(
-      backgroundColor: colors.navBackground,
-      indicatorColor: colors.navActiveItem.withValues(alpha: 0.1),
-      surfaceTintColor: Colors.transparent,
-      labelTextStyle: WidgetStateProperty.resolveWith((states) {
-        final isSelected = states.contains(WidgetState.selected);
-        return AppTypography.label.copyWith(
-          color: isSelected ? colors.navActiveItem : colors.navInactiveItem,
-        );
-      }),
-      selectedIndex: selectedIndex,
-      onDestinationSelected: (index) => _onItemTapped(context, index),
-      destinations: [
-        AppNavigationDestination(
-          icon: Icons.home_outlined,
-          activeIcon: Icons.home,
-          label: localizatons.accounting,
-          isSelected: selectedIndex == 0,
-        ),
-        AppNavigationDestination(
-          icon: Icons.search_outlined,
-          activeIcon: Icons.search,
-          label: localizatons.warehouse,
-          isSelected: selectedIndex == 1,
-        ),
-        AppNavigationDestination(
-          icon: Icons.favorite_outline,
-          activeIcon: Icons.favorite,
-          label: localizatons.sales,
-          isSelected: selectedIndex == 2,
-        ),
-        AppNavigationDestination(
-          icon: Icons.person_outline,
-          activeIcon: Icons.person,
-          label: localizatons.aiAssistant,
-          isSelected: selectedIndex == 3,
-        ),
-        AppNavigationDestination(
-          icon: Icons.person_outline,
-          activeIcon: Icons.person,
-          label: localizatons.settings,
-          isSelected: selectedIndex == 4,
-        ),
-        AppNavigationDestination(
-          icon: Icons.person_outline,
-          activeIcon: Icons.person,
-          label: localizatons.tracking,
-          isSelected: selectedIndex == 5,
-        ),
-      ],
+    return Container(
+      color: colors.navBackground,
+      padding: AppSizes.small.horizontalPadding,
+      child: NavigationBar(
+        backgroundColor: colors.navBackground,
+        indicatorColor: colors.navActiveItem.withValues(alpha: 0.1),
+        surfaceTintColor: Colors.transparent,
+        labelTextStyle: WidgetStateProperty.resolveWith((states) {
+          final isSelected = states.contains(WidgetState.selected);
+          return AppTypography.label.copyWith(
+            color: isSelected ? colors.navActiveItem : colors.navInactiveItem,
+            overflow: TextOverflow.ellipsis,
+          );
+        }),
+        selectedIndex: selectedIndex,
+        onDestinationSelected: (index) => _onItemTapped(context, index),
+        destinations: [
+          AppNavigationDestination(
+            icon: LucideIcons.calculator,
+            activeIcon: LucideIcons.wallet,
+            label: localizatons.accounting,
+            isSelected: selectedIndex == 0,
+          ),
+          AppNavigationDestination(
+            icon: LucideIcons.package,
+            activeIcon: LucideIcons.boxes,
+            label: localizatons.warehouse,
+            isSelected: selectedIndex == 1,
+          ),
+          AppNavigationDestination(
+            icon: LucideIcons.shoppingCart,
+            activeIcon: LucideIcons.shoppingBag,
+            label: localizatons.sales,
+            isSelected: selectedIndex == 2,
+          ),
+          AppNavigationDestination(
+            icon: LucideIcons.sparkles,
+            activeIcon: LucideIcons.bot,
+            label: localizatons.aiAssistant,
+            isSelected: selectedIndex == 3,
+          ),
+          AppNavigationDestination(
+            icon: LucideIcons.settings,
+            activeIcon: LucideIcons.settings2,
+            label: localizatons.settings,
+            isSelected: selectedIndex == 4,
+          ),
+          AppNavigationDestination(
+            icon: LucideIcons.truck,
+            activeIcon: LucideIcons.mapPin,
+            label: localizatons.tracking,
+            isSelected: selectedIndex == 5,
+          ),
+        ],
+      ),
     );
   }
 }
