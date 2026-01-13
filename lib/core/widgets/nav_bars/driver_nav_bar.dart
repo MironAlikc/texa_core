@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lucide_icons/lucide_icons.dart';
 import 'package:texa_core/core/extensions/theme_ext.dart';
 import 'package:texa_core/core/l10n/gen/app_localizations.dart';
 import 'package:texa_core/core/navigation/routes_provider.dart';
+import 'package:texa_core/core/theme/app_sizes.dart';
 import 'package:texa_core/core/theme/app_typography.dart';
 import 'package:texa_core/core/widgets/nav_bars/app_navigation_destination.dart';
 
@@ -43,44 +45,49 @@ class DriverNavBar extends StatelessWidget {
     final selectedIndex = _calculateSelectedIndex(context);
     final localizations = AppLocalizations.of(context);
 
-    return NavigationBar(
-      backgroundColor: colors.navBackground,
-      indicatorColor: colors.navActiveItem.withValues(alpha: 0.1),
-      surfaceTintColor: Colors.transparent,
-      labelTextStyle: WidgetStateProperty.resolveWith((states) {
-        final isSelected = states.contains(WidgetState.selected);
-        return AppTypography.label.copyWith(
-          color: isSelected ? colors.navActiveItem : colors.navInactiveItem,
-        );
-      }),
-      selectedIndex: selectedIndex,
-      onDestinationSelected: (index) => _onItemTapped(context, index),
-      destinations: [
-        AppNavigationDestination(
-          icon: Icons.home_outlined,
-          activeIcon: Icons.home,
-          label: localizations.delivery,
-          isSelected: selectedIndex == 0,
-        ),
-        AppNavigationDestination(
-          icon: Icons.search_outlined,
-          activeIcon: Icons.search,
-          label: localizations.deliveryPoint,
-          isSelected: selectedIndex == 1,
-        ),
-        AppNavigationDestination(
-          icon: Icons.favorite_outline,
-          activeIcon: Icons.favorite,
-          label: localizations.returns,
-          isSelected: selectedIndex == 2,
-        ),
-        AppNavigationDestination(
-          icon: Icons.person_outline,
-          activeIcon: Icons.person,
-          label: localizations.profile,
-          isSelected: selectedIndex == 3,
-        ),
-      ],
+    return Container(
+      color: colors.navBackground,
+      padding: AppSizes.small.horizontalPadding,
+      child: NavigationBar(
+        backgroundColor: colors.navBackground,
+        indicatorColor: colors.navActiveItem.withValues(alpha: 0.1),
+        surfaceTintColor: Colors.transparent,
+        labelTextStyle: WidgetStateProperty.resolveWith((states) {
+          final isSelected = states.contains(WidgetState.selected);
+          return AppTypography.label.copyWith(
+            color: isSelected ? colors.navActiveItem : colors.navInactiveItem,
+            overflow: TextOverflow.ellipsis,
+          );
+        }),
+        selectedIndex: selectedIndex,
+        onDestinationSelected: (index) => _onItemTapped(context, index),
+        destinations: [
+          AppNavigationDestination(
+            icon: LucideIcons.truck,
+            activeIcon: LucideIcons.gauge,
+            label: localizations.delivery,
+            isSelected: selectedIndex == 0,
+          ),
+          AppNavigationDestination(
+            icon: LucideIcons.mapPin,
+            activeIcon: LucideIcons.navigation,
+            label: localizations.deliveryPoint,
+            isSelected: selectedIndex == 1,
+          ),
+          AppNavigationDestination(
+            icon: LucideIcons.undo2,
+            activeIcon: LucideIcons.packageCheck,
+            label: localizations.returns,
+            isSelected: selectedIndex == 2,
+          ),
+          AppNavigationDestination(
+            icon: LucideIcons.contact2,
+            activeIcon: LucideIcons.badgeCheck,
+            label: localizations.profile,
+            isSelected: selectedIndex == 3,
+          ),
+        ],
+      ),
     );
   }
 }
