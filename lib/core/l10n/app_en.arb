@@ -34,5 +34,9 @@
   "support": "Support",
   "language": "Language",
   "close": "Close",
-  "edit": "Edit"
+  "edit": "Edit",
+  "light": "Light",
+  "dark": "Dark",
+  "system": "System",
+  "theme": "Theme"
 }
