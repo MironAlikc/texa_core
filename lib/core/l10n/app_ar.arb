@@ -14,5 +14,22 @@
   "sales": "المبيعات",
   "aiAssistant": "مساعد الذكاء الاصطناعي",
   "tracking": "التتبع",
-  "settings": "الإعدادات"
+  "settings": "الإعدادات",
+  "startShift": "بدء المناوبة",
+  "deliveryDriver": "سائق توصيل",
+  "onDuty": "في الخدمة",
+  "offDuty": "خارج الخدمة",
+  "startShift": "بدء المناوبة",
+  "endShift": "إنهاء المناوبة",
+  "startedAt": "بدأت في {shiftStartTime}",
+  "deliveriesToday": "توصيلات اليوم",
+  "activityHours": "ساعات النشاط",
+  "delivered": "تم التوصيل",
+  "failed": "فشلت",
+  "gpsTracking": "تتبع نظام تحديد المواقع (GPS)",
+  "gpsIsOn": "نظام تحديد المواقع مفعل",
+  "gpsIsOff": "نظام تحديد المواقع متوقف",
+  "appearance": "المظهر",
+  "security": "الأمان",
+  "support": "الدعم"
 }

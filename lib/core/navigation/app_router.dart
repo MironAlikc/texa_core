@@ -11,8 +11,7 @@ import 'package:texa_core/features/auth/fake_login/go_router_refresh_stream.dart
 import 'package:texa_core/features/auth/fake_login/login_screen.dart';
 import 'package:texa_core/features/driver/presentation/delivery/delivery_screen.dart';
 import 'package:texa_core/features/driver/presentation/delivery_point/delivery_point_screen.dart';
-import 'package:texa_core/features/driver/presentation/driver_profile/driver_profile_screen.dart';
-import 'package:texa_core/features/driver/presentation/driver_profile/presentation/screens/settings_screen.dart';
+import 'package:texa_core/features/driver/presentation/driver_profile/presentation/driver_profile_screen.dart';
 import 'package:texa_core/features/driver/presentation/returns/returns_screen.dart';
 import 'package:texa_core/features/manager/presentation/accounting/accounting_screen.dart';
 import 'package:texa_core/features/manager/presentation/ai_assistant/ai_assistant_screen.dart';
@@ -126,13 +125,6 @@ class AppRouter {
               key: state.pageKey,
               child: const DriverProfileScreen(),
             ),
-            routes: [
-              GoRoute(
-                path: 'settings',
-                name: AppRoutes.settings,
-                builder: (context, state) => const SettingsScreen(),
-              ),
-            ],
           ),
         ],
       ),

@@ -7,7 +7,6 @@ abstract class AppRoutes {
   static const deliveryPoint = 'deliveryPoint';
   static const returns = 'returns';
   static const profile = 'profile';
-  static const settings = 'settings';
 
   // Recipient routes
   static const receiving = 'receiving';
@@ -31,7 +30,6 @@ extension NavigationHelpers on BuildContext {
   void goToDeliveryPoint() => goNamed(AppRoutes.deliveryPoint);
   void goToReturns() => goNamed(AppRoutes.returns);
   void goToProfile() => goNamed(AppRoutes.profile);
-  void goToSettings() => pushNamed(AppRoutes.settings);
 
   // Recipient navigation
   void goToReceiving() => goNamed(AppRoutes.receiving);

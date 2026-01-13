@@ -52,4 +52,54 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get settings => 'Настройки';
+
+  @override
+  String get startShift => 'Начать смену';
+
+  @override
+  String get deliveryDriver => 'Водитель доставки';
+
+  @override
+  String get onDuty => 'На смене';
+
+  @override
+  String get offDuty => 'Вне смены';
+
+  @override
+  String get endShift => 'Завершить смену';
+
+  @override
+  String startedAt(Object shiftStartTime) {
+    return 'Начало в $shiftStartTime';
+  }
+
+  @override
+  String get deliveriesToday => 'Доставок сегодня';
+
+  @override
+  String get activityHours => 'Часы активности';
+
+  @override
+  String get delivered => 'Доставлено';
+
+  @override
+  String get failed => 'Не доставлено';
+
+  @override
+  String get gpsTracking => 'GPS-мониторинг';
+
+  @override
+  String get gpsIsOn => 'GPS включен';
+
+  @override
+  String get gpsIsOff => 'GPS выключен';
+
+  @override
+  String get appearance => 'Внешний вид';
+
+  @override
+  String get security => 'Безопасность';
+
+  @override
+  String get support => 'Поддержка';
 }

@@ -52,4 +52,54 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get settings => 'الإعدادات';
+
+  @override
+  String get startShift => 'بدء المناوبة';
+
+  @override
+  String get deliveryDriver => 'سائق توصيل';
+
+  @override
+  String get onDuty => 'في الخدمة';
+
+  @override
+  String get offDuty => 'خارج الخدمة';
+
+  @override
+  String get endShift => 'إنهاء المناوبة';
+
+  @override
+  String startedAt(Object shiftStartTime) {
+    return 'بدأت في $shiftStartTime';
+  }
+
+  @override
+  String get deliveriesToday => 'توصيلات اليوم';
+
+  @override
+  String get activityHours => 'ساعات النشاط';
+
+  @override
+  String get delivered => 'تم التوصيل';
+
+  @override
+  String get failed => 'فشلت';
+
+  @override
+  String get gpsTracking => 'تتبع نظام تحديد المواقع (GPS)';
+
+  @override
+  String get gpsIsOn => 'نظام تحديد المواقع مفعل';
+
+  @override
+  String get gpsIsOff => 'نظام تحديد المواقع متوقف';
+
+  @override
+  String get appearance => 'المظهر';
+
+  @override
+  String get security => 'الأمان';
+
+  @override
+  String get support => 'الدعم';
 }

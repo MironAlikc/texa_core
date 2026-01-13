@@ -14,5 +14,22 @@
   "sales": "Sales",
   "aiAssistant": "AI Assistant",
   "tracking": "Tracking",
-  "settings": "Settings"
+  "settings": "Settings",
+  "startShift": "Start shift",
+  "deliveryDriver": "Delivery Driver",
+  "onDuty": "On Duty",
+  "offDuty": "Off Duty",
+  "startShift": "Start shift",
+  "endShift": "End shift",
+  "startedAt": "Started at {shiftStartTime}",
+  "deliveriesToday": "Deliveries today",
+  "activityHours": "Activity hours",
+  "delivered": "Delivered",
+  "failed": "Failed",
+  "gpsTracking": "GPS Tracking",
+  "gpsIsOn": "GPS is on",
+  "gpsIsOff": "GPS is turned off",
+  "appearance": "Appearance",
+  "security": "Security",
+  "support": "Support"
 }

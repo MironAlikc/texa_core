@@ -52,4 +52,54 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settings => 'Settings';
+
+  @override
+  String get startShift => 'Start shift';
+
+  @override
+  String get deliveryDriver => 'Delivery Driver';
+
+  @override
+  String get onDuty => 'On Duty';
+
+  @override
+  String get offDuty => 'Off Duty';
+
+  @override
+  String get endShift => 'End shift';
+
+  @override
+  String startedAt(Object shiftStartTime) {
+    return 'Started at $shiftStartTime';
+  }
+
+  @override
+  String get deliveriesToday => 'Deliveries today';
+
+  @override
+  String get activityHours => 'Activity hours';
+
+  @override
+  String get delivered => 'Delivered';
+
+  @override
+  String get failed => 'Failed';
+
+  @override
+  String get gpsTracking => 'GPS Tracking';
+
+  @override
+  String get gpsIsOn => 'GPS is on';
+
+  @override
+  String get gpsIsOff => 'GPS is turned off';
+
+  @override
+  String get appearance => 'Appearance';
+
+  @override
+  String get security => 'Security';
+
+  @override
+  String get support => 'Support';
 }
