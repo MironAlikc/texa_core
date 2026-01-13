@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 import 'package:texa_core/core/extensions/theme_ext.dart';
 import 'package:texa_core/core/l10n/gen/app_localizations.dart';
+import 'package:texa_core/core/l10n/locale_cubit/locale_cubit.dart';
+import 'package:texa_core/core/models/language.dart';
+import 'package:texa_core/core/theme/app_color_extension.dart';
 import 'package:texa_core/core/theme/app_sizes.dart';
 import 'package:texa_core/core/theme/app_typography.dart';
 import 'package:texa_core/core/widgets/buttons/app_switch.dart';
+import 'package:texa_core/core/widgets/buttons/app_text_button.dart';
 import 'package:texa_core/core/widgets/icons/icon_container.dart';
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/driver_stats_grid.dart';
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/driver_status_card.dart';
+import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/language_selection_panel.dart';
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/profile_section.dart';
 
 class DriverProfileScreen extends StatefulWidget {
@@ -19,6 +25,17 @@ class DriverProfileScreen extends StatefulWidget {
 
 class _DriverProfileScreenState extends State<DriverProfileScreen> {
   bool isGpsEnabled = true;
+  bool isLanguageEditing = false;
+  String currentLanguageCode = 'ru';
+
+  String _getLanguageName(String code) {
+    final language = languages.firstWhere(
+      (lang) => lang.code == code,
+      orElse: () => languages.first,
+    );
+
+    return '${language.flag} ${language.name}';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +78,7 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
         padding: const EdgeInsets.all(AppSizes.medium),
         children: [
           AppSizes.small.verticalBox,
-          _buildHeader('Profile', colors),
+          _buildHeader(localizations.profile, colors),
 
           DriverStatusCard(),
 
@@ -98,23 +115,61 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
           AppSizes.large.verticalBox,
 
           _buildHeader(localizations.appearance, colors),
-          ProfileSection(
-            colors: colors,
-            children: [
-              _ProfileTile(
-                icon: Icons.dark_mode_outlined,
-                title: 'Dark Mode',
-                trailing: Switch.adaptive(value: false, onChanged: (v) {}),
+
+          BlocBuilder<LocaleCubit, Locale>(
+            builder: (context, localeState) {
+              return ProfileSection(
                 colors: colors,
-              ),
-              _ProfileTile(
-                icon: Icons.language_outlined,
-                title: 'Language',
-                subtitle: 'English',
-                onTap: () {},
-                colors: colors,
-              ),
-            ],
+                children: [
+                  _ProfileTile(
+                    icon: Icons.language_outlined,
+                    title: localizations.loading,
+                    subtitle: isLanguageEditing
+                        ? null
+                        : _getLanguageName(localeState.languageCode),
+                    colors: colors,
+                    iconColor: Colors.indigoAccent,
+                    showDivider: !isLanguageEditing,
+                    isEdit: true,
+                    editText: isLanguageEditing
+                        ? localizations.close
+                        : localizations.edit,
+                    onTap: () {
+                      setState(() {
+                        isLanguageEditing = !isLanguageEditing;
+                      });
+                    },
+                  ),
+                  if (isLanguageEditing)
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: LanguageSelectionPanel(
+                        colors: colors,
+                        selectedCode: currentLanguageCode,
+                        onLanguageSelected: (lang) {
+                          setState(() {
+                            currentLanguageCode = lang.code;
+                            isLanguageEditing = false;
+                          });
+                        },
+                      ),
+                    ),
+                  _ProfileTile(
+                    icon: Icons.dark_mode_outlined,
+                    title: 'Dark Mode',
+                    colors: colors,
+                  ),
+                  _ProfileTile(
+                    icon: Icons.language_outlined,
+                    title: 'Уведомления',
+                    subtitle: 'включены',
+                    trailing: Switch.adaptive(value: false, onChanged: (v) {}),
+                    onTap: () {},
+                    colors: colors,
+                  ),
+                ],
+              );
+            },
           ),
 
           const SizedBox(height: AppSizes.large),
@@ -200,7 +255,9 @@ class _ProfileTile extends StatelessWidget {
   final Color? iconColor;
   final bool hideChevron;
   final bool showDivider;
-  final dynamic colors;
+  final AppColorExtension colors;
+  final bool isEdit;
+  final String editText;
 
   const _ProfileTile({
     required this.icon,
@@ -213,12 +270,14 @@ class _ProfileTile extends StatelessWidget {
     this.iconColor,
     this.hideChevron = false,
     this.showDivider = true,
+    this.isEdit = false,
+    this.editText = 'Редактировать',
   });
 
   @override
   Widget build(BuildContext context) {
     final effectiveIconColor = iconColor ?? colors.accent;
-    final effectiveBgColor = effectiveIconColor.withOpacity(0.1);
+    final effectiveBgColor = effectiveIconColor.withValues(alpha: 0.1);
 
     return Column(
       children: [
@@ -247,9 +306,21 @@ class _ProfileTile extends StatelessWidget {
                   ),
                 )
               : null,
-          trailing:
-              trailing ??
-              (hideChevron ? null : const Icon(Icons.chevron_right_rounded)),
+          trailing: isEdit
+              ? AppTextButton(
+                  title: editText,
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  foregroundColor: colors.textPrimary,
+                  onPressed: onTap ?? () {},
+                )
+              : (trailing ??
+                    (hideChevron
+                        ? null
+                        : Icon(
+                            LucideIcons.chevronRight,
+                            color: colors.textPrimary,
+                            size: AppSizes.medium,
+                          ))),
         ),
         if (showDivider)
           Divider(

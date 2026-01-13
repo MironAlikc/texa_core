@@ -102,4 +102,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get support => 'Поддержка';
+
+  @override
+  String get language => 'Язык';
+
+  @override
+  String get close => 'Закрыть';
+
+  @override
+  String get edit => 'Редактировать';
 }

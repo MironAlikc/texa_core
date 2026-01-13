@@ -31,5 +31,8 @@
   "gpsIsOff": "نظام تحديد المواقع متوقف",
   "appearance": "المظهر",
   "security": "الأمان",
-  "support": "الدعم"
+  "support": "الدعم",
+  "language": "اللغة",
+  "close": "إغلاق",
+  "edit": "تعديل"
 }

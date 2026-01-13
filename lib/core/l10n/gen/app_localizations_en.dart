@@ -102,4 +102,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get support => 'Support';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get close => 'Close';
+
+  @override
+  String get edit => 'Edit';
 }
