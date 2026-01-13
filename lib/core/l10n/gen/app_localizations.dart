@@ -189,6 +189,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Settings'**
   String get settings;
+
+  /// No description provided for @startShift.
+  ///
+  /// In en, this message translates to:
+  /// **'Start shift'**
+  String get startShift;
+
+  /// No description provided for @deliveryDriver.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Driver'**
+  String get deliveryDriver;
+
+  /// No description provided for @onDuty.
+  ///
+  /// In en, this message translates to:
+  /// **'On Duty'**
+  String get onDuty;
+
+  /// No description provided for @offDuty.
+  ///
+  /// In en, this message translates to:
+  /// **'Off Duty'**
+  String get offDuty;
+
+  /// No description provided for @endShift.
+  ///
+  /// In en, this message translates to:
+  /// **'End shift'**
+  String get endShift;
+
+  /// No description provided for @startedAt.
+  ///
+  /// In en, this message translates to:
+  /// **'Started at {shiftStartTime}'**
+  String startedAt(Object shiftStartTime);
+
+  /// No description provided for @deliveriesToday.
+  ///
+  /// In en, this message translates to:
+  /// **'Deliveries today'**
+  String get deliveriesToday;
+
+  /// No description provided for @activityHours.
+  ///
+  /// In en, this message translates to:
+  /// **'Activity hours'**
+  String get activityHours;
+
+  /// No description provided for @delivered.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivered'**
+  String get delivered;
+
+  /// No description provided for @failed.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed'**
+  String get failed;
+
+  /// No description provided for @gpsTracking.
+  ///
+  /// In en, this message translates to:
+  /// **'GPS Tracking'**
+  String get gpsTracking;
+
+  /// No description provided for @gpsIsOn.
+  ///
+  /// In en, this message translates to:
+  /// **'GPS is on'**
+  String get gpsIsOn;
+
+  /// No description provided for @gpsIsOff.
+  ///
+  /// In en, this message translates to:
+  /// **'GPS is turned off'**
+  String get gpsIsOff;
+
+  /// No description provided for @appearance.
+  ///
+  /// In en, this message translates to:
+  /// **'Appearance'**
+  String get appearance;
+
+  /// No description provided for @security.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get security;
+
+  /// No description provided for @support.
+  ///
+  /// In en, this message translates to:
+  /// **'Support'**
+  String get support;
 }
 
 class _AppLocalizationsDelegate

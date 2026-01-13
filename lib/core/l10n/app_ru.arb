@@ -14,5 +14,22 @@
   "sales": "Продажи",
   "aiAssistant": "AI-помощник",
   "tracking": "Отслеживание",
-  "settings": "Настройки"
+  "settings": "Настройки",
+  "startShift": "Начать смену",
+  "deliveryDriver": "Водитель доставки",
+  "onDuty": "На смене",
+  "offDuty": "Вне смены",
+  "startShift": "Начать смену",
+  "endShift": "Завершить смену",
+  "startedAt": "Начало в {shiftStartTime}",
+  "deliveriesToday": "Доставок сегодня",
+  "activityHours": "Часы активности",
+  "delivered": "Доставлено",
+  "failed": "Не доставлено",
+  "gpsTracking": "GPS-мониторинг",
+  "gpsIsOn": "GPS включен",
+  "gpsIsOff": "GPS выключен",
+  "appearance": "Внешний вид",
+  "security": "Безопасность",
+  "support": "Поддержка"
 }
