@@ -5,9 +5,11 @@ import 'package:texa_core/core/extensions/theme_ext.dart';
 import 'package:texa_core/core/l10n/gen/app_localizations.dart';
 import 'package:texa_core/core/l10n/locale_cubit/locale_cubit.dart';
 import 'package:texa_core/core/models/language.dart';
+import 'package:texa_core/core/models/theme_option.dart';
 import 'package:texa_core/core/theme/app_color_extension.dart';
 import 'package:texa_core/core/theme/app_sizes.dart';
 import 'package:texa_core/core/theme/app_typography.dart';
+import 'package:texa_core/core/theme/theme_cubit/theme_cubit.dart';
 import 'package:texa_core/core/widgets/buttons/app_switch.dart';
 import 'package:texa_core/core/widgets/buttons/app_text_button.dart';
 import 'package:texa_core/core/widgets/icons/icon_container.dart';
@@ -15,6 +17,7 @@ import 'package:texa_core/features/driver/presentation/driver_profile/presentati
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/driver_status_card.dart';
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/language_selection_panel.dart';
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/profile_section.dart';
+import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/theme_selection_panel.dart';
 
 class DriverProfileScreen extends StatefulWidget {
   const DriverProfileScreen({super.key});
@@ -27,6 +30,7 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
   bool isGpsEnabled = true;
   bool isLanguageEditing = false;
   String currentLanguageCode = 'ru';
+  bool isThemeEditing = false;
 
   String _getLanguageName(String code) {
     final language = languages.firstWhere(
@@ -37,10 +41,22 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
     return '${language.flag} ${language.name}';
   }
 
+  ThemeOption _getThemeInfo(BuildContext context, AppThemeMode mode) {
+    final options = ThemeOptions.getOptions(context);
+    return options.firstWhere(
+      (opt) => opt.mode == mode,
+      orElse: () => options.first,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final colors = context.color;
     final localizations = AppLocalizations.of(context);
+
+    final themeMode = context.watch<ThemeCubit>().state;
+    final currentAppMode = mapToAppThemeMode(themeMode);
+    final currentThemeInfo = _getThemeInfo(context, currentAppMode);
 
     return Scaffold(
       backgroundColor: colors.background,
@@ -122,13 +138,12 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                 colors: colors,
                 children: [
                   _ProfileTile(
-                    icon: Icons.language_outlined,
-                    title: localizations.loading,
+                    icon: LucideIcons.languages,
+                    title: localizations.language,
                     subtitle: isLanguageEditing
                         ? null
                         : _getLanguageName(localeState.languageCode),
                     colors: colors,
-                    iconColor: Colors.indigoAccent,
                     showDivider: !isLanguageEditing,
                     isEdit: true,
                     editText: isLanguageEditing
@@ -142,7 +157,7 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                   ),
                   if (isLanguageEditing)
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: AppSizes.medium.allPadding,
                       child: LanguageSelectionPanel(
                         colors: colors,
                         selectedCode: currentLanguageCode,
@@ -154,11 +169,39 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                         },
                       ),
                     ),
+
                   _ProfileTile(
-                    icon: Icons.dark_mode_outlined,
-                    title: 'Dark Mode',
+                    icon: currentThemeInfo.icon,
+                    title: localizations.theme,
+                    subtitle: isThemeEditing ? null : currentThemeInfo.label,
                     colors: colors,
+                    isEdit: true,
+                    editText: isThemeEditing
+                        ? localizations.close
+                        : localizations.edit,
+                    onTap: () =>
+                        setState(() => isThemeEditing = !isThemeEditing),
                   ),
+                  AnimatedSize(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                    child: isThemeEditing
+                        ? Padding(
+                            padding: const EdgeInsets.fromLTRB(12, 0, 12, 16),
+                            child: ThemeSelectionPanel(
+                              colors: colors,
+                              currentMode: currentAppMode,
+                              onSelected: (AppThemeMode newMode) {
+                                context.read<ThemeCubit>().setTheme(
+                                  mapToThemeMode(newMode),
+                                );
+                                setState(() => isThemeEditing = false);
+                              },
+                            ),
+                          )
+                        : const SizedBox(width: double.infinity, height: 0),
+                  ),
+
                   _ProfileTile(
                     icon: Icons.language_outlined,
                     title: 'Уведомления',
@@ -271,7 +314,7 @@ class _ProfileTile extends StatelessWidget {
     this.hideChevron = false,
     this.showDivider = true,
     this.isEdit = false,
-    this.editText = 'Редактировать',
+    this.editText = '',
   });
 
   @override
@@ -310,7 +353,7 @@ class _ProfileTile extends StatelessWidget {
               ? AppTextButton(
                   title: editText,
                   padding: const EdgeInsets.symmetric(horizontal: 8),
-                  foregroundColor: colors.textPrimary,
+                  foregroundColor: colors.accent,
                   onPressed: onTap ?? () {},
                 )
               : (trailing ??
