@@ -31,5 +31,8 @@
   "gpsIsOff": "GPS выключен",
   "appearance": "Внешний вид",
   "security": "Безопасность",
-  "support": "Поддержка"
+  "support": "Поддержка",
+  "language": "Язык",
+  "close": "Закрыть",
+  "edit": "Редактировать"
 }

@@ -102,4 +102,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get support => 'الدعم';
+
+  @override
+  String get language => 'اللغة';
+
+  @override
+  String get close => 'إغلاق';
+
+  @override
+  String get edit => 'تعديل';
 }
