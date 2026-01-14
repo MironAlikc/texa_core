@@ -132,4 +132,16 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get notifications => 'Уведомления';
+
+  @override
+  String get biometricEntry => 'Вход по биометрии';
+
+  @override
+  String get twoFactorAuthentication => 'Двухфакторная аутентификация';
+
+  @override
+  String get biometricDescription => 'Вход по отпечатку пальца или лицу';
+
+  @override
+  String get twoFactorDescription => 'Дополнительная защита аккаунта';
 }

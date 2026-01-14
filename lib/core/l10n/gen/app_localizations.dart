@@ -345,6 +345,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Notifications'**
   String get notifications;
+
+  /// No description provided for @biometricEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric entry'**
+  String get biometricEntry;
+
+  /// No description provided for @twoFactorAuthentication.
+  ///
+  /// In en, this message translates to:
+  /// **'Two-factor authentication'**
+  String get twoFactorAuthentication;
+
+  /// No description provided for @biometricDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Fingerprint or facial recognition login'**
+  String get biometricDescription;
+
+  /// No description provided for @twoFactorDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional account protection'**
+  String get twoFactorDescription;
 }
 
 class _AppLocalizationsDelegate

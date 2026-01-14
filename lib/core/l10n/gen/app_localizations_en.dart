@@ -132,4 +132,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notifications => 'Notifications';
+
+  @override
+  String get biometricEntry => 'Biometric entry';
+
+  @override
+  String get twoFactorAuthentication => 'Two-factor authentication';
+
+  @override
+  String get biometricDescription => 'Fingerprint or facial recognition login';
+
+  @override
+  String get twoFactorDescription => 'Additional account protection';
 }

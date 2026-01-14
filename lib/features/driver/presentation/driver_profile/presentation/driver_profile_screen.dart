@@ -29,6 +29,8 @@ class DriverProfileScreen extends StatefulWidget {
 class _DriverProfileScreenState extends State<DriverProfileScreen> {
   bool isGpsEnabled = true;
   bool isNotificationsEnabled = true;
+  bool isBiometryEnabled = true;
+  bool isTwoFactorAuthenticationEnabled = true;
   bool isLanguageEditing = false;
   String currentLanguageCode = 'ru';
   bool isThemeEditing = false;
@@ -235,17 +237,40 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
             colors: colors,
             children: [
               _ProfileTile(
-                icon: Icons.lock_outline_rounded,
-                title: 'Change Password',
-                onTap: () {},
+                icon: LucideIcons.fingerprint,
+                iconColor: isBiometryEnabled
+                    ? colors.accent
+                    : colors.textTertiary,
+                title: localizations.biometricEntry,
+                subtitle: localizations.biometricDescription,
                 colors: colors,
+                trailing: AppSwitch(
+                  value: isBiometryEnabled,
+                  onChanged: (bool value) {
+                    setState(() {
+                      isBiometryEnabled = value;
+                    });
+                  },
+                ),
               ),
               _ProfileTile(
-                icon: Icons.fingerprint_rounded,
-                title: 'Biometrics',
-                trailing: Switch.adaptive(value: true, onChanged: (v) {}),
+                icon: LucideIcons.shieldCheck,
+                iconColor: isTwoFactorAuthenticationEnabled
+                    ? colors.accent
+                    : colors.textTertiary,
+                title: localizations.twoFactorAuthentication,
+                subtitle: localizations.twoFactorDescription,
+                onTap: () {},
                 colors: colors,
                 showDivider: false,
+                trailing: AppSwitch(
+                  value: isTwoFactorAuthenticationEnabled,
+                  onChanged: (bool value) {
+                    setState(() {
+                      isTwoFactorAuthenticationEnabled = value;
+                    });
+                  },
+                ),
               ),
             ],
           ),
@@ -352,6 +377,7 @@ class _ProfileTile extends StatelessWidget {
             title,
             style: AppTypography.bodyMedium.copyWith(
               color: titleColor ?? colors.textPrimary,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
           subtitle: subtitle != null
@@ -359,6 +385,7 @@ class _ProfileTile extends StatelessWidget {
                   subtitle!,
                   style: AppTypography.bodySmall.copyWith(
                     color: iconColor ?? colors.textSecondary,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 )
               : null,

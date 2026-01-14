@@ -41,5 +41,9 @@
   "theme": "المظهر",
   "disabled": "معطل",
   "enabled": "مفعل",
-  "notifications": "الإشعارات"
+  "notifications": "الإشعارات",
+  "biometricEntry": "الدخول بالمؤشرات الحيوية",
+  "twoFactorAuthentication": "المصادقة الثنائية",
+  "biometricDescription": "تسجيل الدخول عن طريق بصمة الإصبع أو التعرف على الوجه",
+  "twoFactorDescription": "حماية إضافية للحساب"
 }

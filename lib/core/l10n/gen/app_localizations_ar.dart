@@ -132,4 +132,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get notifications => 'الإشعارات';
+
+  @override
+  String get biometricEntry => 'الدخول بالمؤشرات الحيوية';
+
+  @override
+  String get twoFactorAuthentication => 'المصادقة الثنائية';
+
+  @override
+  String get biometricDescription =>
+      'تسجيل الدخول عن طريق بصمة الإصبع أو التعرف على الوجه';
+
+  @override
+  String get twoFactorDescription => 'حماية إضافية للحساب';
 }

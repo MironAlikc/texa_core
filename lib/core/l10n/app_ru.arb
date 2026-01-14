@@ -41,5 +41,9 @@
   "theme": "Тема",
   "disabled": "Выключено",
   "enabled": "Включено",
-  "notifications": "Уведомления"
+  "notifications": "Уведомления",
+  "biometricEntry": "Вход по биометрии",
+  "twoFactorAuthentication": "Двухфакторная аутентификация",
+  "biometricDescription": "Вход по отпечатку пальца или лицу",
+  "twoFactorDescription": "Дополнительная защита аккаунта"
 }

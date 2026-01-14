@@ -41,5 +41,9 @@
   "theme": "Theme",
   "disabled": "Disabled",
   "enabled": "Enabled",
-  "notifications": "Notifications"
+  "notifications": "Notifications",
+  "biometricEntry": "Biometric entry",
+  "twoFactorAuthentication": "Two-factor authentication",
+  "biometricDescription": "Fingerprint or facial recognition login",
+  "twoFactorDescription": "Additional account protection"
 }
