@@ -28,6 +28,7 @@ class DriverProfileScreen extends StatefulWidget {
 
 class _DriverProfileScreenState extends State<DriverProfileScreen> {
   bool isGpsEnabled = true;
+  bool isNotificationsEnabled = true;
   bool isLanguageEditing = false;
   String currentLanguageCode = 'ru';
   bool isThemeEditing = false;
@@ -203,10 +204,22 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                   ),
 
                   _ProfileTile(
-                    icon: Icons.language_outlined,
-                    title: 'Уведомления',
-                    subtitle: 'включены',
-                    trailing: Switch.adaptive(value: false, onChanged: (v) {}),
+                    icon: LucideIcons.bell,
+                    iconColor: isNotificationsEnabled
+                        ? colors.accent
+                        : colors.textTertiary,
+                    title: localizations.notifications,
+                    subtitle: isNotificationsEnabled
+                        ? localizations.enabled
+                        : localizations.disabled,
+                    trailing: AppSwitch(
+                      value: isNotificationsEnabled,
+                      onChanged: (bool value) {
+                        setState(() {
+                          isNotificationsEnabled = value;
+                        });
+                      },
+                    ),
                     onTap: () {},
                     colors: colors,
                   ),

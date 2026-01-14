@@ -123,4 +123,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get theme => 'Theme';
+
+  @override
+  String get disabled => 'Disabled';
+
+  @override
+  String get enabled => 'Enabled';
+
+  @override
+  String get notifications => 'Notifications';
 }

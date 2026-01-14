@@ -123,4 +123,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get theme => 'Тема';
+
+  @override
+  String get disabled => 'Выключено';
+
+  @override
+  String get enabled => 'Включено';
+
+  @override
+  String get notifications => 'Уведомления';
 }

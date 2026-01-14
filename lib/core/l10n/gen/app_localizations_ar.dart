@@ -123,4 +123,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get theme => 'المظهر';
+
+  @override
+  String get disabled => 'معطل';
+
+  @override
+  String get enabled => 'مفعل';
+
+  @override
+  String get notifications => 'الإشعارات';
 }
