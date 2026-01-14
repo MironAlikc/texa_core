@@ -12,6 +12,7 @@ import 'package:texa_core/core/theme/app_typography.dart';
 import 'package:texa_core/core/theme/theme_cubit/theme_cubit.dart';
 import 'package:texa_core/core/widgets/buttons/app_switch.dart';
 import 'package:texa_core/core/widgets/buttons/app_text_button.dart';
+import 'package:texa_core/core/widgets/buttons/primary_button.dart';
 import 'package:texa_core/core/widgets/icons/icon_container.dart';
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/driver_stats_grid.dart';
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/driver_status_card.dart';
@@ -275,7 +276,7 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
             ],
           ),
 
-          const SizedBox(height: AppSizes.large),
+          AppSizes.large.verticalBox,
 
           _buildHeader(localizations.support, colors),
           ProfileSection(
@@ -292,19 +293,31 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                 title: 'About App',
                 onTap: () {},
                 colors: colors,
-              ),
-              _ProfileTile(
-                icon: Icons.logout_rounded,
-                title: 'Logout',
-                titleColor: Colors.redAccent,
-                iconColor: Colors.redAccent,
-                hideChevron: true,
                 showDivider: false,
-                onTap: () {},
-                colors: colors,
               ),
+              // _ProfileTile(
+              //   icon: Icons.logout_rounded,
+              //   title: 'Logout',
+              //   titleColor: Colors.redAccent,
+              //   iconColor: Colors.redAccent,
+              //   hideChevron: true,
+              //   showDivider: false,
+              //   onTap: () {},
+              //   colors: colors,
+              // ),
             ],
           ),
+
+          AppSizes.large.verticalBox,
+
+          PrimaryButton(
+            title: 'Exit Driver Mode',
+            icon: LucideIcons.logOut,
+            foregroundColor: colors.error,
+            backgroundColor: colors.error.withValues(alpha: 0.12),
+          ),
+
+          AppSizes.extraLarge.verticalBox,
         ],
       ),
     );
