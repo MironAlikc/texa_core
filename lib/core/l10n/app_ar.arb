@@ -38,5 +38,15 @@
   "light": "فاتح",
   "dark": "داكن",
   "system": "النظام",
-  "theme": "المظهر"
+  "theme": "المظهر",
+  "disabled": "معطل",
+  "enabled": "مفعل",
+  "notifications": "الإشعارات",
+  "biometricEntry": "الدخول بالمؤشرات الحيوية",
+  "twoFactorAuthentication": "المصادقة الثنائية",
+  "biometricDescription": "تسجيل الدخول عن طريق بصمة الإصبع أو التعرف على الوجه",
+  "twoFactorDescription": "حماية إضافية للحساب",
+  "helpCenter": "مركز المساعدة",
+  "aboutApp": "حول التطبيق",
+  "exitDriverMode": "الخروج من وضع السائق"
 }

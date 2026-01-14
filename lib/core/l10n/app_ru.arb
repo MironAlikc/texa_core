@@ -38,5 +38,15 @@
   "light": "Светлая",
   "dark": "Темная",
   "system": "Системная",
-  "theme": "Тема"
+  "theme": "Тема",
+  "disabled": "Выключено",
+  "enabled": "Включено",
+  "notifications": "Уведомления",
+  "biometricEntry": "Вход по биометрии",
+  "twoFactorAuthentication": "Двухфакторная аутентификация",
+  "biometricDescription": "Вход по отпечатку пальца или лицу",
+  "twoFactorDescription": "Дополнительная защита аккаунта",
+  "helpCenter": "Центр помощи",
+  "aboutApp": "О приложении",
+  "exitDriverMode": "Выйти из режима водителя"
 }

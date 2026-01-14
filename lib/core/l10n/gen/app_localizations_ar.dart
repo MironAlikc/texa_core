@@ -123,4 +123,35 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get theme => 'المظهر';
+
+  @override
+  String get disabled => 'معطل';
+
+  @override
+  String get enabled => 'مفعل';
+
+  @override
+  String get notifications => 'الإشعارات';
+
+  @override
+  String get biometricEntry => 'الدخول بالمؤشرات الحيوية';
+
+  @override
+  String get twoFactorAuthentication => 'المصادقة الثنائية';
+
+  @override
+  String get biometricDescription =>
+      'تسجيل الدخول عن طريق بصمة الإصبع أو التعرف على الوجه';
+
+  @override
+  String get twoFactorDescription => 'حماية إضافية للحساب';
+
+  @override
+  String get helpCenter => 'مركز المساعدة';
+
+  @override
+  String get aboutApp => 'حول التطبيق';
+
+  @override
+  String get exitDriverMode => 'الخروج من وضع السائق';
 }

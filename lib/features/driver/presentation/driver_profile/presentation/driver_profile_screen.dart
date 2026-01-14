@@ -6,17 +6,16 @@ import 'package:texa_core/core/l10n/gen/app_localizations.dart';
 import 'package:texa_core/core/l10n/locale_cubit/locale_cubit.dart';
 import 'package:texa_core/core/models/language.dart';
 import 'package:texa_core/core/models/theme_option.dart';
-import 'package:texa_core/core/theme/app_color_extension.dart';
 import 'package:texa_core/core/theme/app_sizes.dart';
 import 'package:texa_core/core/theme/app_typography.dart';
 import 'package:texa_core/core/theme/theme_cubit/theme_cubit.dart';
 import 'package:texa_core/core/widgets/buttons/app_switch.dart';
-import 'package:texa_core/core/widgets/buttons/app_text_button.dart';
-import 'package:texa_core/core/widgets/icons/icon_container.dart';
+import 'package:texa_core/core/widgets/buttons/primary_button.dart';
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/driver_stats_grid.dart';
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/driver_status_card.dart';
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/language_selection_panel.dart';
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/profile_section.dart';
+import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/profile_tile.dart';
 import 'package:texa_core/features/driver/presentation/driver_profile/presentation/components/theme_selection_panel.dart';
 
 class DriverProfileScreen extends StatefulWidget {
@@ -28,6 +27,9 @@ class DriverProfileScreen extends StatefulWidget {
 
 class _DriverProfileScreenState extends State<DriverProfileScreen> {
   bool isGpsEnabled = true;
+  bool isNotificationsEnabled = true;
+  bool isBiometryEnabled = true;
+  bool isTwoFactorAuthenticationEnabled = true;
   bool isLanguageEditing = false;
   String currentLanguageCode = 'ru';
   bool isThemeEditing = false;
@@ -94,6 +96,7 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
         padding: const EdgeInsets.all(AppSizes.medium),
         children: [
           AppSizes.small.verticalBox,
+
           _buildHeader(localizations.profile, colors),
 
           DriverStatusCard(),
@@ -107,7 +110,7 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
           ProfileSection(
             colors: colors,
             children: [
-              _ProfileTile(
+              ProfileTile(
                 icon: LucideIcons.locateFixed,
                 title: localizations.gpsTracking,
                 subtitle: isGpsEnabled
@@ -137,7 +140,7 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
               return ProfileSection(
                 colors: colors,
                 children: [
-                  _ProfileTile(
+                  ProfileTile(
                     icon: LucideIcons.languages,
                     title: localizations.language,
                     subtitle: isLanguageEditing
@@ -170,7 +173,7 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                       ),
                     ),
 
-                  _ProfileTile(
+                  ProfileTile(
                     icon: currentThemeInfo.icon,
                     title: localizations.theme,
                     subtitle: isThemeEditing ? null : currentThemeInfo.label,
@@ -202,11 +205,23 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
                         : const SizedBox(width: double.infinity, height: 0),
                   ),
 
-                  _ProfileTile(
-                    icon: Icons.language_outlined,
-                    title: 'Уведомления',
-                    subtitle: 'включены',
-                    trailing: Switch.adaptive(value: false, onChanged: (v) {}),
+                  ProfileTile(
+                    icon: LucideIcons.bell,
+                    iconColor: isNotificationsEnabled
+                        ? colors.accent
+                        : colors.textTertiary,
+                    title: localizations.notifications,
+                    subtitle: isNotificationsEnabled
+                        ? localizations.enabled
+                        : localizations.disabled,
+                    trailing: AppSwitch(
+                      value: isNotificationsEnabled,
+                      onChanged: (bool value) {
+                        setState(() {
+                          isNotificationsEnabled = value;
+                        });
+                      },
+                    ),
                     onTap: () {},
                     colors: colors,
                   ),
@@ -218,55 +233,82 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
           const SizedBox(height: AppSizes.large),
 
           _buildHeader(localizations.security, colors),
+
           ProfileSection(
             colors: colors,
             children: [
-              _ProfileTile(
-                icon: Icons.lock_outline_rounded,
-                title: 'Change Password',
+              ProfileTile(
+                icon: LucideIcons.fingerprint,
+                iconColor: isBiometryEnabled
+                    ? colors.accent
+                    : colors.textTertiary,
+                title: localizations.biometricEntry,
+                subtitle: localizations.biometricDescription,
+                colors: colors,
+                trailing: AppSwitch(
+                  value: isBiometryEnabled,
+                  onChanged: (bool value) {
+                    setState(() {
+                      isBiometryEnabled = value;
+                    });
+                  },
+                ),
+              ),
+              ProfileTile(
+                icon: LucideIcons.shieldCheck,
+                iconColor: isTwoFactorAuthenticationEnabled
+                    ? colors.accent
+                    : colors.textTertiary,
+                title: localizations.twoFactorAuthentication,
+                subtitle: localizations.twoFactorDescription,
                 onTap: () {},
                 colors: colors,
-              ),
-              _ProfileTile(
-                icon: Icons.fingerprint_rounded,
-                title: 'Biometrics',
-                trailing: Switch.adaptive(value: true, onChanged: (v) {}),
-                colors: colors,
                 showDivider: false,
+                trailing: AppSwitch(
+                  value: isTwoFactorAuthenticationEnabled,
+                  onChanged: (bool value) {
+                    setState(() {
+                      isTwoFactorAuthenticationEnabled = value;
+                    });
+                  },
+                ),
               ),
             ],
           ),
 
-          const SizedBox(height: AppSizes.large),
+          AppSizes.large.verticalBox,
 
           _buildHeader(localizations.support, colors),
+
           ProfileSection(
             colors: colors,
             children: [
-              _ProfileTile(
-                icon: Icons.help_outline_rounded,
-                title: 'Help Center',
+              ProfileTile(
+                icon: LucideIcons.helpCircle,
+                title: localizations.helpCenter,
                 onTap: () {},
                 colors: colors,
               ),
-              _ProfileTile(
-                icon: Icons.info_outline_rounded,
-                title: 'About App',
+              ProfileTile(
+                icon: LucideIcons.info,
+                title: localizations.aboutApp,
                 onTap: () {},
                 colors: colors,
-              ),
-              _ProfileTile(
-                icon: Icons.logout_rounded,
-                title: 'Logout',
-                titleColor: Colors.redAccent,
-                iconColor: Colors.redAccent,
-                hideChevron: true,
                 showDivider: false,
-                onTap: () {},
-                colors: colors,
               ),
             ],
           ),
+
+          AppSizes.large.verticalBox,
+
+          PrimaryButton(
+            title: localizations.exitDriverMode,
+            icon: LucideIcons.logOut,
+            foregroundColor: colors.error,
+            backgroundColor: colors.error.withValues(alpha: 0.12),
+          ),
+
+          AppSizes.extraLarge.verticalBox,
         ],
       ),
     );
@@ -284,95 +326,6 @@ class _DriverProfileScreenState extends State<DriverProfileScreen> {
           color: colors.textSecondary,
         ),
       ),
-    );
-  }
-}
-
-class _ProfileTile extends StatelessWidget {
-  final IconData icon;
-  final String title;
-  final String? subtitle;
-  final Widget? trailing;
-  final VoidCallback? onTap;
-  final Color? titleColor;
-  final Color? iconColor;
-  final bool hideChevron;
-  final bool showDivider;
-  final AppColorExtension colors;
-  final bool isEdit;
-  final String editText;
-
-  const _ProfileTile({
-    required this.icon,
-    required this.title,
-    required this.colors,
-    this.subtitle,
-    this.trailing,
-    this.onTap,
-    this.titleColor,
-    this.iconColor,
-    this.hideChevron = false,
-    this.showDivider = true,
-    this.isEdit = false,
-    this.editText = '',
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final effectiveIconColor = iconColor ?? colors.accent;
-    final effectiveBgColor = effectiveIconColor.withValues(alpha: 0.1);
-
-    return Column(
-      children: [
-        ListTile(
-          onTap: onTap,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSizes.medium),
-          ),
-          leading: AppIconContainer(
-            icon: icon,
-            iconColor: effectiveIconColor,
-            backgroundColor: effectiveBgColor,
-            borderRadius: 10,
-          ),
-          title: Text(
-            title,
-            style: AppTypography.bodyMedium.copyWith(
-              color: titleColor ?? colors.textPrimary,
-            ),
-          ),
-          subtitle: subtitle != null
-              ? Text(
-                  subtitle!,
-                  style: AppTypography.bodySmall.copyWith(
-                    color: iconColor ?? colors.textSecondary,
-                  ),
-                )
-              : null,
-          trailing: isEdit
-              ? AppTextButton(
-                  title: editText,
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  foregroundColor: colors.accent,
-                  onPressed: onTap ?? () {},
-                )
-              : (trailing ??
-                    (hideChevron
-                        ? null
-                        : Icon(
-                            LucideIcons.chevronRight,
-                            color: colors.textPrimary,
-                            size: AppSizes.medium,
-                          ))),
-        ),
-        if (showDivider)
-          Divider(
-            indent: 56,
-            endIndent: 16,
-            height: 1,
-            color: colors.borderLight,
-          ),
-      ],
     );
   }
 }

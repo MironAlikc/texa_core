@@ -327,6 +327,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Theme'**
   String get theme;
+
+  /// No description provided for @disabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Disabled'**
+  String get disabled;
+
+  /// No description provided for @enabled.
+  ///
+  /// In en, this message translates to:
+  /// **'Enabled'**
+  String get enabled;
+
+  /// No description provided for @notifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
+
+  /// No description provided for @biometricEntry.
+  ///
+  /// In en, this message translates to:
+  /// **'Biometric entry'**
+  String get biometricEntry;
+
+  /// No description provided for @twoFactorAuthentication.
+  ///
+  /// In en, this message translates to:
+  /// **'Two-factor authentication'**
+  String get twoFactorAuthentication;
+
+  /// No description provided for @biometricDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Fingerprint or facial recognition login'**
+  String get biometricDescription;
+
+  /// No description provided for @twoFactorDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Additional account protection'**
+  String get twoFactorDescription;
+
+  /// No description provided for @helpCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Help Center'**
+  String get helpCenter;
+
+  /// No description provided for @aboutApp.
+  ///
+  /// In en, this message translates to:
+  /// **'About App'**
+  String get aboutApp;
+
+  /// No description provided for @exitDriverMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit Driver Mode'**
+  String get exitDriverMode;
 }
 
 class _AppLocalizationsDelegate

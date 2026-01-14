@@ -123,4 +123,34 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get theme => 'Theme';
+
+  @override
+  String get disabled => 'Disabled';
+
+  @override
+  String get enabled => 'Enabled';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get biometricEntry => 'Biometric entry';
+
+  @override
+  String get twoFactorAuthentication => 'Two-factor authentication';
+
+  @override
+  String get biometricDescription => 'Fingerprint or facial recognition login';
+
+  @override
+  String get twoFactorDescription => 'Additional account protection';
+
+  @override
+  String get helpCenter => 'Help Center';
+
+  @override
+  String get aboutApp => 'About App';
+
+  @override
+  String get exitDriverMode => 'Exit Driver Mode';
 }
