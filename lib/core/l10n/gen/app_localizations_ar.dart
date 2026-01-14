@@ -145,4 +145,13 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get twoFactorDescription => 'حماية إضافية للحساب';
+
+  @override
+  String get helpCenter => 'مركز المساعدة';
+
+  @override
+  String get aboutApp => 'حول التطبيق';
+
+  @override
+  String get exitDriverMode => 'الخروج من وضع السائق';
 }

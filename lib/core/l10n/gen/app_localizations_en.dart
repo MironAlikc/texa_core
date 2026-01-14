@@ -144,4 +144,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get twoFactorDescription => 'Additional account protection';
+
+  @override
+  String get helpCenter => 'Help Center';
+
+  @override
+  String get aboutApp => 'About App';
+
+  @override
+  String get exitDriverMode => 'Exit Driver Mode';
 }

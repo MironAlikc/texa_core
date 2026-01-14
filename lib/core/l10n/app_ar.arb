@@ -45,5 +45,8 @@
   "biometricEntry": "الدخول بالمؤشرات الحيوية",
   "twoFactorAuthentication": "المصادقة الثنائية",
   "biometricDescription": "تسجيل الدخول عن طريق بصمة الإصبع أو التعرف على الوجه",
-  "twoFactorDescription": "حماية إضافية للحساب"
+  "twoFactorDescription": "حماية إضافية للحساب",
+  "helpCenter": "مركز المساعدة",
+  "aboutApp": "حول التطبيق",
+  "exitDriverMode": "الخروج من وضع السائق"
 }

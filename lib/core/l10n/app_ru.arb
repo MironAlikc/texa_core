@@ -45,5 +45,8 @@
   "biometricEntry": "Вход по биометрии",
   "twoFactorAuthentication": "Двухфакторная аутентификация",
   "biometricDescription": "Вход по отпечатку пальца или лицу",
-  "twoFactorDescription": "Дополнительная защита аккаунта"
+  "twoFactorDescription": "Дополнительная защита аккаунта",
+  "helpCenter": "Центр помощи",
+  "aboutApp": "О приложении",
+  "exitDriverMode": "Выйти из режима водителя"
 }

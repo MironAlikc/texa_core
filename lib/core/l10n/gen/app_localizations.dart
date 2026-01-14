@@ -369,6 +369,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Additional account protection'**
   String get twoFactorDescription;
+
+  /// No description provided for @helpCenter.
+  ///
+  /// In en, this message translates to:
+  /// **'Help Center'**
+  String get helpCenter;
+
+  /// No description provided for @aboutApp.
+  ///
+  /// In en, this message translates to:
+  /// **'About App'**
+  String get aboutApp;
+
+  /// No description provided for @exitDriverMode.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit Driver Mode'**
+  String get exitDriverMode;
 }
 
 class _AppLocalizationsDelegate

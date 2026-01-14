@@ -144,4 +144,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get twoFactorDescription => 'Дополнительная защита аккаунта';
+
+  @override
+  String get helpCenter => 'Центр помощи';
+
+  @override
+  String get aboutApp => 'О приложении';
+
+  @override
+  String get exitDriverMode => 'Выйти из режима водителя';
 }

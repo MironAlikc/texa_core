@@ -45,5 +45,8 @@
   "biometricEntry": "Biometric entry",
   "twoFactorAuthentication": "Two-factor authentication",
   "biometricDescription": "Fingerprint or facial recognition login",
-  "twoFactorDescription": "Additional account protection"
+  "twoFactorDescription": "Additional account protection",
+  "helpCenter": "Help Center",
+  "aboutApp": "About App",
+  "exitDriverMode": "Exit Driver Mode"
 }
